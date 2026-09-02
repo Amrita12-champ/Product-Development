@@ -1,2 +1,2 @@
 # Product-Development
-major project using spring-boot and angular
+Major project using Spring-boot and Angular
