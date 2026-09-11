@@ -1,0 +1,30 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  padding: 25px;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.content {
+  flex: 1;
+}
