@@ -1,285 +1,326 @@
 <div class="diagnosis-page">
 
+  <!-- PAGE HEADER -->
+
   <div class="page-header">
-    <span>🌱 CROP HEALTH</span>
-    <h1>Crop Disease Diagnosis</h1>
-    <p>Upload a crop leaf image to identify possible diseases.</p>
+
+```
+<div>
+  <span class="eyebrow">🌱 SMART AGRICULTURE</span>
+
+  <h1>Crop Disease Diagnosis</h1>
+
+  <p>
+    Upload a crop leaf image and analyze its health condition.
+  </p>
+</div>
+
+<div class="system-status">
+  <span class="status-dot"></span>
+  System Ready
+</div>
+```
+
   </div>
 
-  <div class="diagnosis-grid">
+  <!-- MAIN DIAGNOSIS CARD -->
 
-    <!-- UPLOAD CARD -->
-    <div class="card upload-card">
+  <section class="diagnosis-card">
 
-      <div class="card-heading">
-        <div>
-          <h2>Upload Crop Image</h2>
-          <p class="muted">Choose a clear image of the affected leaf.</p>
-        </div>
+```
+<div class="card-heading">
 
-        <span class="step-badge">STEP 1</span>
+  <div class="card-icon">
+    🔬
+  </div>
+
+  <div>
+    <h2>Leaf Image Analysis</h2>
+
+    <p>
+      Upload a clear image of the affected crop leaf.
+    </p>
+  </div>
+
+</div>
+
+
+<!-- UPLOAD AREA -->
+@if (!selectedImage) {
+
+  <div class="upload-area">
+
+    <div class="upload-icon">
+      🌿
+    </div>
+
+    <h3>Upload Crop Leaf Image</h3>
+
+    <p>
+      Choose a clear and well-lit image of the crop leaf.
+    </p>
+
+    <label class="upload-button">
+
+      📁 Choose Image
+
+      <input
+        type="file"
+        accept="image/*"
+        (change)="onImageSelected($event)"
+        hidden
+      />
+
+    </label>
+
+    <div class="upload-note">
+      Supported format: JPG, JPEG, PNG
+    </div>
+
+  </div>
+
+}
+
+
+<!-- IMAGE PREVIEW -->
+@if (selectedImage) {
+
+  <div class="preview-section">
+
+    <div class="preview-header">
+
+      <div>
+        <h3>Selected Image</h3>
+
+        <p>
+          {{ fileName }} · {{ fileSize }}
+        </p>
       </div>
-
-      <div
-        class="upload-area"
-        [class.has-image]="selectedImage"
-        (click)="fileInput.click()"
-      >
-
-        <input
-          #fileInput
-          type="file"
-          accept="image/png,image/jpeg,image/jpg"
-          hidden
-          (change)="onImageSelected($event)"
-        />
-
-        @if (!selectedImage) {
-
-          <div class="empty-upload">
-
-            <div class="leaf-icon">🌿</div>
-
-            <h3>Upload Leaf Image</h3>
-
-            <p>Click to select an image</p>
-
-            <small>
-              JPG, JPEG or PNG • Max 10 MB
-            </small>
-
-          </div>
-
-        }
-
-        @if (selectedImage) {
-
-          <div class="preview">
-
-            <img
-              [src]="selectedImage"
-              alt="Selected crop leaf"
-            />
-
-            <div class="image-overlay">
-              <span>🔄 Change Image</span>
-            </div>
-
-          </div>
-
-        }
-
-      </div>
-
-      @if (selectedImage) {
-
-        <div class="file-info">
-
-          <div>
-            <span class="file-icon">🖼️</span>
-
-            <div>
-              <strong>{{ fileName }}</strong>
-              <small>{{ fileSize }}</small>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            class="remove-btn"
-            (click)="removeImage($event)"
-          >
-            ✕
-          </button>
-
-        </div>
-
-      }
-
-      <button
-        class="primary-btn"
-        [disabled]="!selectedImage || isDiagnosing"
-        (click)="diagnose()"
-      >
-
-        @if (isDiagnosing) {
-          <span class="spinner"></span>
-          Analyzing Image...
-        } @else {
-          🔍 Diagnose Crop
-        }
-
-      </button>
 
       <button
         type="button"
-        class="reset-btn"
-        (click)="resetDiagnosis()"
-      >
-        Reset
+        class="remove-button"
+        (click)="removeImage($event)">
+
+        ✕ Remove
+
       </button>
 
     </div>
 
 
-    <!-- RESULT CARD -->
-    <div class="card result-card">
+    <div class="image-preview">
 
-      <div class="result-title">
-
-        <div>
-          <span>AI ANALYSIS</span>
-          <h2>Diagnosis Result</h2>
-        </div>
-
-        <div
-          class="badge"
-          [class.completed]="showResult"
-        >
-          {{ showResult ? '✓ Completed' : 'Waiting' }}
-        </div>
-
-      </div>
-
-
-      @if (!showResult && !isDiagnosing) {
-
-        <div class="waiting-state">
-
-          <div class="waiting-icon">🔬</div>
-
-          <h3>Ready for Analysis</h3>
-
-          <p>
-            Upload a crop leaf image and click
-            <strong>Diagnose Crop</strong>
-            to analyze the plant health.
-          </p>
-
-        </div>
-
-      }
-
-
-      @if (isDiagnosing) {
-
-        <div class="loading-state">
-
-          <div class="loader"></div>
-
-          <h3>Analyzing Crop...</h3>
-
-          <p>
-            AI is checking the uploaded leaf image.
-          </p>
-
-        </div>
-
-      }
-
-
-      @if (showResult) {
-
-        <div class="result-content">
-
-          <!-- Disease -->
-          <div class="result-row disease-row">
-
-            <div class="result-label">
-              <span class="result-icon">🦠</span>
-
-              <div>
-                <span>Disease</span>
-                <small>Detected condition</small>
-              </div>
-            </div>
-
-            <strong>{{ disease }}</strong>
-
-          </div>
-
-
-          <!-- Confidence -->
-          <div class="result-row">
-
-            <div class="result-label">
-              <span class="result-icon">📊</span>
-
-              <div>
-                <span>Confidence</span>
-                <small>AI prediction accuracy</small>
-              </div>
-            </div>
-
-            <strong>{{ confidence }}</strong>
-
-          </div>
-
-          <div class="confidence-bar">
-
-            <div
-              class="confidence-progress"
-              [style.width]="confidence"
-            ></div>
-
-          </div>
-
-
-          <!-- Severity -->
-          <div class="result-row">
-
-            <div class="result-label">
-              <span class="result-icon">⚠️</span>
-
-              <div>
-                <span>Severity</span>
-                <small>Current disease level</small>
-              </div>
-            </div>
-
-            <strong class="severity">
-              {{ severity }}
-            </strong>
-
-          </div>
-
-
-          <!-- Recommendation -->
-          <div class="recommendation">
-
-            <div class="recommendation-icon">
-              💡
-            </div>
-
-            <div>
-
-              <strong>Recommended Action</strong>
-
-              <p>
-                Monitor the affected crop regularly and
-                consider appropriate treatment based on
-                the detected disease.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="analysis-footer">
-
-            <span>✓ Analysis completed</span>
-
-            <span>{{ diagnosisTime }}</span>
-
-          </div>
-
-        </div>
-
-      }
+      <img
+        [src]="selectedImage"
+        alt="Selected crop leaf image"
+      />
 
     </div>
 
   </div>
+
+}
+
+
+<!-- DIAGNOSE BUTTON -->
+<button
+  type="button"
+  class="diagnose-button"
+  [disabled]="!selectedImage || isDiagnosing"
+  (click)="diagnose()">
+
+  @if (isDiagnosing) {
+
+    <span class="spinner"></span>
+    Analyzing Image...
+
+  } @else {
+
+    <span>🔍</span>
+    Diagnose Crop
+
+  }
+
+</button>
+
+
+<!-- RESET BUTTON -->
+@if (selectedImage) {
+
+  <button
+    type="button"
+    class="reset-button"
+    (click)="resetDiagnosis()">
+
+    ↻ Start New Diagnosis
+
+  </button>
+
+}
+```
+
+  </section>
+
+  <!-- RESULT CARD -->
+
+@if (showResult) {
+
+```
+<section class="result-card">
+
+  <div class="result-top">
+
+    <div>
+
+      <span class="result-label">
+        ANALYSIS RESULT
+      </span>
+
+      <h2>Diagnosis Result</h2>
+
+      <p class="result-time">
+        Analysis completed at {{ diagnosisTime }}
+      </p>
+
+    </div>
+
+    <div class="result-badge">
+      ✓ Analysis Complete
+    </div>
+
+  </div>
+
+
+  <!-- RESULT VALUES -->
+  <div class="result-grid">
+
+    <div class="result-item">
+
+      <span>🦠 Disease</span>
+
+      <strong>
+        {{ disease }}
+      </strong>
+
+    </div>
+
+
+    <div class="result-item">
+
+      <span>🎯 Confidence</span>
+
+      <strong>
+        {{ confidence }}
+      </strong>
+
+    </div>
+
+
+    <div class="result-item">
+
+      <span>⚠️ Severity</span>
+
+      <strong>
+        {{ severity }}
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <!-- RECOMMENDATION -->
+  <div class="recommendation-box">
+
+    <div class="recommendation-icon">
+      💡
+    </div>
+
+    <div>
+
+      <h3>Recommendation</h3>
+
+      <p>
+        The crop shows signs of Leaf Spot.
+        Monitor the affected leaves regularly and
+        take appropriate preventive measures.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+```
+
+}
+
+  <!-- INFORMATION CARDS -->
+
+  <section class="info-grid">
+
+```
+<article class="info-card">
+
+  <div class="info-icon">
+    📷
+  </div>
+
+  <div>
+
+    <h3>Clear Image</h3>
+
+    <p>
+      Upload a clear and well-lit crop leaf image
+      for better diagnosis results.
+    </p>
+
+  </div>
+
+</article>
+
+
+<article class="info-card">
+
+  <div class="info-icon">
+    🧠
+  </div>
+
+  <div>
+
+    <h3>Smart Analysis</h3>
+
+    <p>
+      The system analyzes the uploaded image
+      to identify possible crop diseases.
+    </p>
+
+  </div>
+
+</article>
+
+
+<article class="info-card">
+
+  <div class="info-icon">
+    🛡️
+  </div>
+
+  <div>
+
+    <h3>Early Detection</h3>
+
+    <p>
+      Early detection helps farmers take
+      preventive action and protect crop health.
+    </p>
+
+  </div>
+
+</article>
+```
+
+  </section>
 
 </div>
