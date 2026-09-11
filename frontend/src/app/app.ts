@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
 import { LanguageSelectorComponent } from './components/language-selector/language-selector';
-import { CropDiagnosis } from './components/crop-diagnosis/crop-diagnosis';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +10,7 @@ import { CropDiagnosis } from './components/crop-diagnosis/crop-diagnosis';
     CommonModule,
     RouterLink,
     RouterOutlet,
-    LanguageSelectorComponent,
-    CropDiagnosis
+    LanguageSelectorComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

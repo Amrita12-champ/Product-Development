@@ -1,14 +1,7 @@
 import { Routes } from '@angular/router';
-import { Diagnosis } from './components/diagnosis/diagnosis';
-import { Risk } from './components/risk/risk';
+import { CropDiagnosis } from './components/crop-diagnosis/crop-diagnosis';
 
 export const routes: Routes = [
-  {
-    path: 'diagnosis',
-    component: Diagnosis
-  },
-  {
-    path: 'risk',
-    component: Risk
-  }
+  { path: '', redirectTo: 'diagnosis', pathMatch: 'full' },
+  { path: 'diagnosis', component: CropDiagnosis }
 ];

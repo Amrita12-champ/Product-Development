@@ -1,0 +1,15 @@
+{
+  "SELECT_LANGUAGE": "Select Language",
+  "ENGLISH": "English",
+  "HINDI": "Hindi",
+  "ODIA": "Odia",
+  "APP_TITLE": "Crop Diagnosis System",
+  "UPLOAD_TITLE": "Upload Crop Leaf Photo",
+  "UPLOAD_DESC": "Take or upload a clear photo of the affected plant leaf.",
+  "SELECT_CROP": "Select Crop Type",
+  "DIAGNOSE_BTN": "Diagnose Disease",
+  "DIAGNOSING": "Analyzing image...",
+  "RESULT_TITLE": "Diagnosis Report",
+  "DISEASE": "Detected Condition",
+  "REMEDY": "Recommended Treatment"
+}
