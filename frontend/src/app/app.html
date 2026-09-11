@@ -1,14 +1,28 @@
-<main class="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
-  <header class="w-full max-w-4xl flex justify-between items-center bg-white p-4 rounded-xl shadow mb-6">
-    <h1 class="text-xl font-bold text-green-700">🌱 Crop Diagnosis System</h1>
-    <!-- Language Dropdown -->
-    <app-language-selector></app-language-selector>
-  </header>
+<div class="layout">
 
-  <section class="w-full max-w-4xl bg-white p-6 rounded-xl shadow">
-    <h2 class="text-lg font-semibold text-gray-800">Welcome</h2>
-    <p class="text-gray-600 mt-2">Select a language above to verify that translation works.</p>
-  </section>
+  <aside class="sidebar">
+    <h2>Crop Dashboard</h2>
 
-  <app-crop-diagnosis></app-crop-diagnosis>
-</main>
+    <nav>
+      <a routerLink="/diagnosis">Diagnosis</a>
+      <a routerLink="/risk">Risk Prediction</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <header class="header">
+      <h1>🌱 Crop Diagnosis System</h1>
+      <app-language-selector></app-language-selector>
+    </header>
+
+    <section class="welcome-section">
+      <h2>Welcome</h2>
+      <p>Select a language above to verify that translation works.</p>
+    </section>
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>
