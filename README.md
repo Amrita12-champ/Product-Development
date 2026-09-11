@@ -10,5 +10,6 @@ An AI-powered agricultural web platform that helps smallholder farmers diagnose 
 * **Crop Health Timeline:** Tracks recovery and compares severity across repeated image uploads[cite: 1, 2].
 * **Multilingual & Voice Support:** Localized in English, Hindi, and Odia with speech-to-text input[cite: 1, 2].
 * **Admin Heatmap:** Outbreak monitoring by village and district for agricultural officers[cite: 1, 2].
+------------
 
 ---
