@@ -4,6 +4,8 @@ import { Diagnosis } from './components/diagnosis/diagnosis';
 import { Risk } from './components/risk/risk';
 import { Monitoring } from './components/monitoring/monitoring';
 import { Profile } from './components/profile/profile';
+import { History } from './components/history/history';
+import { Analytics } from './components/analytics/analytics';
 export const routes: Routes = [
   {
     path: '',
@@ -29,5 +31,13 @@ export const routes: Routes = [
 {
   path: 'profile',
   component: Profile
-}
+},
+{
+    path: 'history',
+    component: History
+  },
+  {
+    path: 'analytics',
+    component: Analytics
+  }
 ];
