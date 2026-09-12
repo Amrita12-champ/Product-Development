@@ -1,0 +1,417 @@
+.risk-page {
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 32px;
+box-sizing: border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+PAGE HEADER
+========================= */
+
+.page-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 24px;
+margin-bottom: 28px;
+}
+
+.eyebrow {
+display: inline-block;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1.2px;
+margin-bottom: 8px;
+color: #2f7d32;
+}
+
+.page-header h1 {
+margin: 0;
+font-size: 32px;
+font-weight: 700;
+color: #183b22;
+}
+
+.page-header p {
+margin: 8px 0 0;
+color: #6b756e;
+font-size: 15px;
+}
+
+.system-status {
+display: flex;
+align-items: center;
+gap: 9px;
+padding: 11px 16px;
+border-radius: 30px;
+background: #f0f8f1;
+color: #2f7d32;
+font-size: 14px;
+font-weight: 600;
+white-space: nowrap;
+}
+
+.status-dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: #43a047;
+}
+
+/* =========================
+PREDICTION CARD
+========================= */
+
+.prediction-card {
+background: #ffffff;
+border: 1px solid #e4ebe5;
+border-radius: 18px;
+padding: 28px;
+box-shadow: 0 8px 25px rgba(30, 70, 40, 0.07);
+}
+
+.card-heading {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 28px;
+}
+
+.card-icon {
+width: 48px;
+height: 48px;
+border-radius: 13px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #eaf6ec;
+font-size: 23px;
+}
+
+.card-heading h2 {
+margin: 0;
+color: #1d3d25;
+font-size: 21px;
+}
+
+.card-heading p {
+margin: 5px 0 0;
+color: #78827b;
+font-size: 14px;
+}
+
+/* =========================
+FORM
+========================= */
+
+.form-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 22px;
+}
+
+.field {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.field label {
+font-size: 14px;
+font-weight: 600;
+color: #33463a;
+}
+
+.field input,
+.field select {
+width: 100%;
+height: 48px;
+padding: 0 14px;
+box-sizing: border-box;
+border: 1px solid #dce5de;
+border-radius: 10px;
+background: #fbfdfb;
+color: #26352b;
+font-size: 14px;
+outline: none;
+transition: 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+border-color: #4c9a55;
+box-shadow: 0 0 0 3px rgba(76, 154, 85, 0.10);
+background: #ffffff;
+}
+
+.input-with-unit {
+position: relative;
+}
+
+.input-with-unit input {
+padding-right: 55px;
+}
+
+.input-with-unit span {
+position: absolute;
+right: 14px;
+top: 50%;
+transform: translateY(-50%);
+color: #778179;
+font-size: 13px;
+font-weight: 600;
+}
+
+/* =========================
+BUTTON
+========================= */
+
+.risk-button {
+width: 100%;
+height: 52px;
+margin-top: 28px;
+border: none;
+border-radius: 11px;
+background: #2f7d32;
+color: #ffffff;
+font-size: 15px;
+font-weight: 700;
+cursor: pointer;
+transition: 0.2s ease;
+}
+
+.risk-button:hover {
+background: #256629;
+transform: translateY(-1px);
+}
+
+.risk-button span {
+margin-right: 8px;
+}
+
+/* =========================
+RESULT CARD
+========================= */
+
+.result-card {
+margin-top: 24px;
+padding: 28px;
+background: #ffffff;
+border: 1px solid #e4ebe5;
+border-radius: 18px;
+box-shadow: 0 8px 25px rgba(30, 70, 40, 0.07);
+}
+
+.result-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 20px;
+}
+
+.result-label {
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 1px;
+color: #6c796f;
+}
+
+.result-top h2 {
+margin: 6px 0 0;
+color: #1d3d25;
+font-size: 21px;
+}
+
+.risk-badge {
+padding: 10px 17px;
+border-radius: 30px;
+font-size: 14px;
+font-weight: 700;
+}
+
+.risk-badge.high {
+background: #fdecec;
+color: #c62828;
+}
+
+.risk-badge.medium {
+background: #fff5df;
+color: #b56b00;
+}
+
+.risk-badge.low {
+background: #eaf7ec;
+color: #2e7d32;
+}
+
+/* =========================
+RESULT STATS
+========================= */
+
+.result-stats {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 14px;
+margin-top: 24px;
+}
+
+.result-stat {
+padding: 17px;
+border-radius: 12px;
+background: #f7faf7;
+border: 1px solid #e8eee9;
+}
+
+.result-stat span {
+display: block;
+margin-bottom: 7px;
+color: #758078;
+font-size: 12px;
+}
+
+.result-stat strong {
+color: #263b2b;
+font-size: 15px;
+}
+
+/* =========================
+RECOMMENDATION
+========================= */
+
+.warning-box {
+display: flex;
+gap: 14px;
+margin-top: 22px;
+padding: 18px;
+border-radius: 13px;
+background: #f5faf5;
+border-left: 4px solid #4c9a55;
+}
+
+.warning-icon {
+font-size: 22px;
+}
+
+.warning-box h3 {
+margin: 0 0 5px;
+font-size: 15px;
+color: #294630;
+}
+
+.warning-box p {
+margin: 0;
+color: #657067;
+font-size: 13px;
+line-height: 1.6;
+}
+
+/* =========================
+INFO CARDS
+========================= */
+
+.info-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 18px;
+margin-top: 24px;
+}
+
+.info-card {
+display: flex;
+gap: 14px;
+padding: 21px;
+background: #ffffff;
+border: 1px solid #e4ebe5;
+border-radius: 16px;
+box-shadow: 0 6px 18px rgba(30, 70, 40, 0.05);
+}
+
+.info-icon {
+min-width: 44px;
+width: 44px;
+height: 44px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+}
+
+.info-icon.weather {
+background: #eef7ff;
+}
+
+.info-icon.moisture {
+background: #eef8ff;
+}
+
+.info-icon.protection {
+background: #eef8ef;
+}
+
+.info-card h3 {
+margin: 0 0 7px;
+color: #29422f;
+font-size: 15px;
+}
+
+.info-card p {
+margin: 0;
+color: #737d76;
+font-size: 13px;
+line-height: 1.55;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+.risk-page {
+padding: 22px;
+}
+
+.result-stats {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.info-grid {
+grid-template-columns: 1fr;
+}
+
+}
+
+@media (max-width: 650px) {
+
+.page-header {
+flex-direction: column;
+align-items: flex-start;
+}
+
+.page-header h1 {
+font-size: 26px;
+}
+
+.form-grid {
+grid-template-columns: 1fr;
+}
+
+.result-top {
+flex-direction: column;
+align-items: flex-start;
+}
+
+.result-stats {
+grid-template-columns: 1fr;
+}
+
+.prediction-card,
+.result-card {
+padding: 20px;
+}
+
+}

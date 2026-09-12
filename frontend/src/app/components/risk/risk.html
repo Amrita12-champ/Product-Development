@@ -1,0 +1,246 @@
+<div class="risk-page">
+
+  <!-- Page Header -->
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">🌾 SMART AGRICULTURE</span>
+      <h1>Crop Risk Prediction</h1>
+      <p>Analyze environmental conditions and identify potential crop risks.</p>
+    </div>
+
+```
+<div class="system-status">
+  <span class="status-dot"></span>
+  System Ready
+</div>
+```
+
+  </div>
+
+  <!-- Main Prediction Card -->
+
+  <section class="prediction-card">
+
+```
+<div class="card-heading">
+  <div class="card-icon">📊</div>
+
+  <div>
+    <h2>Crop Information</h2>
+    <p>Enter the current crop and environmental details.</p>
+  </div>
+</div>
+
+
+<div class="form-grid">
+
+  <!-- Crop -->
+  <div class="field">
+    <label for="cropType">🌱 Crop Type</label>
+
+    <select id="cropType" [(ngModel)]="cropType">
+      <option value="">Select crop type</option>
+      <option value="Rice">Rice</option>
+      <option value="Wheat">Wheat</option>
+      <option value="Maize">Maize</option>
+      <option value="Tomato">Tomato</option>
+      <option value="Potato">Potato</option>
+      <option value="Cotton">Cotton</option>
+    </select>
+  </div>
+
+
+  <!-- Temperature -->
+  <div class="field">
+    <label for="temperature">🌡️ Temperature</label>
+
+    <div class="input-with-unit">
+      <input
+        id="temperature"
+        type="number"
+        [(ngModel)]="temperature"
+        placeholder="Enter temperature"
+      />
+      <span>°C</span>
+    </div>
+  </div>
+
+
+  <!-- Humidity -->
+  <div class="field">
+    <label for="humidity">💧 Humidity</label>
+
+    <div class="input-with-unit">
+      <input
+        id="humidity"
+        type="number"
+        [(ngModel)]="humidity"
+        placeholder="Enter humidity"
+      />
+      <span>%</span>
+    </div>
+  </div>
+
+
+  <!-- Rainfall -->
+  <div class="field">
+    <label for="rainfall">🌧️ Rainfall</label>
+
+    <div class="input-with-unit">
+      <input
+        id="rainfall"
+        type="number"
+        [(ngModel)]="rainfall"
+        placeholder="Enter rainfall"
+      />
+      <span>mm</span>
+    </div>
+  </div>
+
+</div>
+
+
+<button
+  type="button"
+  class="risk-button"
+  (click)="checkRisk()">
+
+  <span>🔍</span>
+  Check Crop Risk
+
+</button>
+```
+
+  </section>
+
+  <!-- Result -->
+
+@if (showResult) {
+
+```
+<section class="result-card">
+
+  <div class="result-top">
+
+    <div>
+      <span class="result-label">ANALYSIS RESULT</span>
+      <h2>Crop Risk Assessment</h2>
+    </div>
+
+    <div
+      class="risk-badge"
+      [class.high]="riskLevel === 'High'"
+      [class.medium]="riskLevel === 'Medium'"
+      [class.low]="riskLevel === 'Low'">
+
+      {{ riskLevel }} Risk
+
+    </div>
+
+  </div>
+
+
+  <div class="result-stats">
+
+    <div class="result-stat">
+      <span>🌱 Crop</span>
+      <strong>{{ cropType }}</strong>
+    </div>
+
+    <div class="result-stat">
+      <span>🌡️ Temperature</span>
+      <strong>{{ temperature }} °C</strong>
+    </div>
+
+    <div class="result-stat">
+      <span>💧 Humidity</span>
+      <strong>{{ humidity }} %</strong>
+    </div>
+
+    <div class="result-stat">
+      <span>🌧️ Rainfall</span>
+      <strong>{{ rainfall }} mm</strong>
+    </div>
+
+  </div>
+
+
+  <div class="warning-box">
+
+    <div class="warning-icon">💡</div>
+
+    <div>
+      <h3>Recommendation</h3>
+      <p>{{ warningMessage }}</p>
+    </div>
+
+  </div>
+
+</section>
+```
+
+}
+
+  <!-- Information Cards -->
+
+  <section class="info-grid">
+
+```
+<article class="info-card">
+
+  <div class="info-icon weather">
+    🌦️
+  </div>
+
+  <div>
+    <h3>Environmental Factors</h3>
+
+    <p>
+      Temperature, humidity and rainfall can affect
+      crop health and disease development.
+    </p>
+  </div>
+
+</article>
+
+
+<article class="info-card">
+
+  <div class="info-icon moisture">
+    💧
+  </div>
+
+  <div>
+    <h3>Crop Monitoring</h3>
+
+    <p>
+      Regular monitoring helps identify changing
+      environmental conditions at an early stage.
+    </p>
+  </div>
+
+</article>
+
+
+<article class="info-card">
+
+  <div class="info-icon protection">
+    🛡️
+  </div>
+
+  <div>
+    <h3>Early Prevention</h3>
+
+    <p>
+      Early risk detection helps farmers take
+      preventive action and protect their crops.
+    </p>
+  </div>
+
+</article>
+```
+
+  </section>
+
+</div>
