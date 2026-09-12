@@ -1,32 +1,48 @@
 <div class="layout">
-
+  <!-- Sidebar Navigation -->
   <aside class="sidebar">
-    <h2>Crop Dashboard</h2>
+    <div class="brand">
+      <span class="brand-icon">🌿</span>
+      <h2 class="brand-title">{{ 'NAV.TITLE' | translate }}</h2>
+    </div>
 
-    <nav>
-      <a routerLink="/profile">Profile</a>
-      <a routerLink="/diagnosis">Diagnosis</a>
-      <a routerLink="/risk">Risk Prediction</a>
-      <a routerLink="/monitoring">Monitoring</a>
-      <a routerLink="/history">History</a>
-      <a routerLink="/analytics">Analytics</a>
+    <nav class="nav-menu">
+      <a routerLink="/profile" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.PROFILE' | translate }}</span>
+      </a>
+      <a routerLink="/diagnosis" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.DIAGNOSIS' | translate }}</span>
+      </a>
+      <a routerLink="/risk" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.RISK_PREDICTION' | translate }}</span>
+      </a>
+      <a routerLink="/monitoring" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.MONITORING' | translate }}</span>
+      </a>
+      <a routerLink="/history" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.HISTORY' | translate }}</span>
+      </a>
+      <a routerLink="/analytics" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.ANALYTICS' | translate }}</span>
+      </a>
     </nav>
   </aside>
 
-  <main class="content">
-
-    <!-- <header class="header">
-      <h1>🌱 Crop Diagnosis System</h1>
+  <!-- Main Content Area -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-spacer"></div>
       <app-language-selector></app-language-selector>
-    </header> -->
+    </header>
 
-    <!-- <section class="welcome-section">
-      <h2>Welcome</h2>
-      <p>Select a language above to verify that translation works.</p>
-    </section> -->
-
-    <router-outlet></router-outlet>
-
-  </main>
-
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

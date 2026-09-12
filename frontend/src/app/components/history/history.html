@@ -2,14 +2,14 @@
 
   <div class="page-header">
     <div>
-      <span class="eyebrow">ACTIVITY HISTORY</span>
-      <h1>History</h1>
-      <p>View your previous crop diagnosis and monitoring activities.</p>
+      <span class="eyebrow">{{ 'HISTORY_PAGE.EYEBROW' | translate }}</span>
+      <h1>{{ 'HISTORY_PAGE.TITLE' | translate }}</h1>
+      <p>{{ 'HISTORY_PAGE.SUBTITLE' | translate }}</p>
     </div>
 
     <div class="history-status">
       <span class="status-dot"></span>
-      Records Available
+      {{ 'HISTORY_PAGE.RECORDS_AVAILABLE' | translate }}
     </div>
   </div>
 
@@ -18,8 +18,8 @@
     <div class="card-heading">
       <div class="card-icon">📋</div>
       <div>
-        <h2>Recent Activities</h2>
-        <p>Your latest crop-related activities are shown below.</p>
+        <h2>{{ 'HISTORY_PAGE.RECENT_ACTIVITIES' | translate }}</h2>
+        <p>{{ 'HISTORY_PAGE.RECENT_ACTIVITIES_SUB' | translate }}</p>
       </div>
     </div>
 
@@ -28,48 +28,48 @@
       <div class="history-item">
         <div class="history-icon">🩺</div>
         <div class="history-info">
-          <h3>Crop Disease Diagnosis</h3>
-          <p>Rice leaf image analyzed for possible disease.</p>
+          <h3>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_RICE_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_RICE_DESC' | translate }}</p>
         </div>
         <div class="history-result">
-          <span class="success-badge">Completed</span>
-          <small>Today</small>
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_COMPLETED' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_TODAY' | translate }}</small>
         </div>
       </div>
 
       <div class="history-item">
         <div class="history-icon">⚠️</div>
         <div class="history-info">
-          <h3>Crop Risk Prediction</h3>
-          <p>Environmental conditions checked for disease risk.</p>
+          <h3>{{ 'HISTORY_PAGE.ITEM_RISK_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_RISK_DESC' | translate }}</p>
         </div>
         <div class="history-result">
-          <span class="medium-badge">Medium Risk</span>
-          <small>Yesterday</small>
+          <span class="medium-badge">{{ 'HISTORY_PAGE.STATUS_MEDIUM_RISK' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_YESTERDAY' | translate }}</small>
         </div>
       </div>
 
       <div class="history-item">
         <div class="history-icon">🌱</div>
         <div class="history-info">
-          <h3>Crop Monitoring</h3>
-          <p>Crop health and environmental conditions monitored.</p>
+          <h3>{{ 'HISTORY_PAGE.ITEM_MONITORING_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_MONITORING_DESC' | translate }}</p>
         </div>
         <div class="history-result">
-          <span class="success-badge">Healthy</span>
-          <small>2 days ago</small>
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_HEALTHY' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_2_DAYS_AGO' | translate }}</small>
         </div>
       </div>
 
       <div class="history-item">
         <div class="history-icon">🩺</div>
         <div class="history-info">
-          <h3>Crop Disease Diagnosis</h3>
-          <p>Wheat crop image analyzed successfully.</p>
+          <h3>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_WHEAT_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_WHEAT_DESC' | translate }}</p>
         </div>
         <div class="history-result">
-          <span class="success-badge">Completed</span>
-          <small>5 days ago</small>
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_COMPLETED' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_5_DAYS_AGO' | translate }}</small>
         </div>
       </div>
 

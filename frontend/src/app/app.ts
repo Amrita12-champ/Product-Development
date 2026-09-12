@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterLink,
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    TranslateModule,
     LanguageSelectorComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
-  title = 'frontend';
+  title = 'crop-dashboard';
 }
 
 export { App as AppComponent };

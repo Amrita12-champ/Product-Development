@@ -1,15 +1,15 @@
-<div class="flex items-center gap-2 p-2">
-  <label for="languageSelect" class="text-sm font-medium text-gray-700">
-    🌐 {{ labels['SELECT_LANGUAGE'] || 'Select Language' }}:
+<div class="lang-container">
+  <label for="languageSelect" class="lang-label">
+    🌐 {{ 'NAV.SELECT_LANGUAGE' | translate }}:
   </label>
   <select
     id="languageSelect"
     [value]="currentLang"
     (change)="onLanguageChange($event)"
-    class="border border-gray-300 rounded px-2 py-1 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
+    class="lang-select"
   >
     <option *ngFor="let lang of languages" [value]="lang.code">
-      {{ labels[lang.key] || lang.code }}
+      {{ lang.label }}
     </option>
   </select>
 </div>
