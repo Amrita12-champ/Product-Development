@@ -1,0 +1,92 @@
+<div class="profile-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">USER PROFILE</span>
+      <h1>My Profile</h1>
+      <p>Manage your personal and farming information.</p>
+    </div>
+
+    <div class="profile-status">
+      <span class="status-dot"></span>
+      Active
+    </div>
+  </div>
+
+  <div class="profile-card">
+
+    <div class="profile-top">
+      <div class="avatar">👤</div>
+
+      <div>
+        <h2>{{ name }}</h2>
+        <p>Crop Dashboard User</p>
+      </div>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" [(ngModel)]="name">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" [(ngModel)]="email">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" [(ngModel)]="phone" placeholder="Enter phone number">
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" [(ngModel)]="location" placeholder="Enter location">
+      </div>
+
+      <div class="form-group full-width">
+        <label>Farm Name</label>
+        <input type="text" [(ngModel)]="farmName" placeholder="Enter farm name">
+      </div>
+
+    </div>
+
+    <div class="profile-actions">
+      <button type="button" (click)="saveProfile()">
+        Save Changes
+      </button>
+    </div>
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="info-icon">🌱</div>
+      <div>
+        <h3>Crop Monitoring</h3>
+        <p>Monitor crop health and environmental conditions.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🩺</div>
+      <div>
+        <h3>Disease Diagnosis</h3>
+        <p>Upload crop images for disease diagnosis.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">📊</div>
+      <div>
+        <h3>Risk Prediction</h3>
+        <p>Check environmental crop disease risk.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

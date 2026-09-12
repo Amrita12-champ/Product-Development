@@ -3,6 +3,7 @@ import { CropDiagnosis } from './components/crop-diagnosis/crop-diagnosis';
 import { Diagnosis } from './components/diagnosis/diagnosis';
 import { Risk } from './components/risk/risk';
 import { Monitoring } from './components/monitoring/monitoring';
+import { Profile } from './components/profile/profile';
 export const routes: Routes = [
   {
     path: '',
@@ -24,5 +25,9 @@ export const routes: Routes = [
   {
   path: 'monitoring',
   component: Monitoring
+},
+{
+  path: 'profile',
+  component: Profile
 }
 ];
