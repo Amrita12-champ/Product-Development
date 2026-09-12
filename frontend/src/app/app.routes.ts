@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { CropDiagnosis } from './components/crop-diagnosis/crop-diagnosis';
 import { Diagnosis } from './components/diagnosis/diagnosis';
 import { Risk } from './components/risk/risk';
-
+import { Monitoring } from './components/monitoring/monitoring';
 export const routes: Routes = [
   {
     path: '',
@@ -20,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'risk',
     component: Risk
-  }
+  },
+  {
+  path: 'monitoring',
+  component: Monitoring
+}
 ];
