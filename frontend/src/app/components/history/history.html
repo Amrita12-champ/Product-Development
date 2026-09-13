@@ -1,0 +1,80 @@
+<div class="history-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'HISTORY_PAGE.EYEBROW' | translate }}</span>
+      <h1>{{ 'HISTORY_PAGE.TITLE' | translate }}</h1>
+      <p>{{ 'HISTORY_PAGE.SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="history-status">
+      <span class="status-dot"></span>
+      {{ 'HISTORY_PAGE.RECORDS_AVAILABLE' | translate }}
+    </div>
+  </div>
+
+  <div class="history-card">
+
+    <div class="card-heading">
+      <div class="card-icon">📋</div>
+      <div>
+        <h2>{{ 'HISTORY_PAGE.RECENT_ACTIVITIES' | translate }}</h2>
+        <p>{{ 'HISTORY_PAGE.RECENT_ACTIVITIES_SUB' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="history-list">
+
+      <div class="history-item">
+        <div class="history-icon">🩺</div>
+        <div class="history-info">
+          <h3>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_RICE_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_RICE_DESC' | translate }}</p>
+        </div>
+        <div class="history-result">
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_COMPLETED' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_TODAY' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-icon">⚠️</div>
+        <div class="history-info">
+          <h3>{{ 'HISTORY_PAGE.ITEM_RISK_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_RISK_DESC' | translate }}</p>
+        </div>
+        <div class="history-result">
+          <span class="medium-badge">{{ 'HISTORY_PAGE.STATUS_MEDIUM_RISK' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_YESTERDAY' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-icon">🌱</div>
+        <div class="history-info">
+          <h3>{{ 'HISTORY_PAGE.ITEM_MONITORING_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_MONITORING_DESC' | translate }}</p>
+        </div>
+        <div class="history-result">
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_HEALTHY' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_2_DAYS_AGO' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="history-item">
+        <div class="history-icon">🩺</div>
+        <div class="history-info">
+          <h3>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_WHEAT_TITLE' | translate }}</h3>
+          <p>{{ 'HISTORY_PAGE.ITEM_DIAGNOSIS_WHEAT_DESC' | translate }}</p>
+        </div>
+        <div class="history-result">
+          <span class="success-badge">{{ 'HISTORY_PAGE.STATUS_COMPLETED' | translate }}</span>
+          <small>{{ 'HISTORY_PAGE.TIME_5_DAYS_AGO' | translate }}</small>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

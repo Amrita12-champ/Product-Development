@@ -1,0 +1,48 @@
+<div class="layout">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">🌿</span>
+      <h2 class="brand-title">{{ 'NAV.TITLE' | translate }}</h2>
+    </div>
+
+    <nav class="nav-menu">
+      <a routerLink="/profile" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.PROFILE' | translate }}</span>
+      </a>
+      <a routerLink="/diagnosis" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.DIAGNOSIS' | translate }}</span>
+      </a>
+      <a routerLink="/risk" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.RISK_PREDICTION' | translate }}</span>
+      </a>
+      <a routerLink="/monitoring" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.MONITORING' | translate }}</span>
+      </a>
+      <a routerLink="/history" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.HISTORY' | translate }}</span>
+      </a>
+      <a routerLink="/analytics" routerLinkActive="active-link">
+        <span class="nav-indicator"></span>
+        <span class="nav-text">{{ 'NAV.ANALYTICS' | translate }}</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-spacer"></div>
+      <app-language-selector></app-language-selector>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

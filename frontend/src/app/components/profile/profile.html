@@ -1,0 +1,104 @@
+<div class="profile-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'profile.eyebrow' | translate }}</span>
+      <h1>{{ 'profile.title' | translate }}</h1>
+      <p>{{ 'profile.subtitle' | translate }}</p>
+    </div>
+
+    <div class="profile-status">
+      <span class="status-dot"></span>
+      {{ 'profile.statusActive' | translate }}
+    </div>
+  </div>
+
+  <div class="profile-card">
+
+    <div class="profile-top">
+      <div class="avatar">👤</div>
+
+      <div>
+        <h2>{{ name }}</h2>
+        <p>{{ 'profile.userRole' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>{{ 'profile.fullName' | translate }}</label>
+        <input type="text" [(ngModel)]="name">
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'profile.emailAddress' | translate }}</label>
+        <input type="email" [(ngModel)]="email">
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'profile.phoneNumber' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="phone"
+          [placeholder]="'profile.phonePlaceholder' | translate"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'profile.location' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="location"
+          [placeholder]="'profile.locationPlaceholder' | translate"
+        >
+      </div>
+
+      <div class="form-group full-width">
+        <label>{{ 'profile.farmName' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="farmName"
+          [placeholder]="'profile.farmNamePlaceholder' | translate"
+        >
+      </div>
+
+    </div>
+
+    <div class="profile-actions">
+      <button type="button" (click)="saveProfile()">
+        {{ 'profile.saveChanges' | translate }}
+      </button>
+    </div>
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="info-icon">🌱</div>
+      <div>
+        <h3>{{ 'profile.monitoringTitle' | translate }}</h3>
+        <p>{{ 'profile.monitoringDesc' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🩺</div>
+      <div>
+        <h3>{{ 'profile.diagnosisTitle' | translate }}</h3>
+        <p>{{ 'profile.diagnosisDesc' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">📊</div>
+      <div>
+        <h3>{{ 'profile.riskTitle' | translate }}</h3>
+        <p>{{ 'profile.riskDesc' | translate }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

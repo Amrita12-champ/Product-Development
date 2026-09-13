@@ -1,0 +1,123 @@
+<div class="monitoring-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">🌱 {{ 'monitoring.smartAgriculture' | translate }}</span>
+      <h1>{{ 'monitoring.title' | translate }}</h1>
+      <p>{{ 'monitoring.subtitle' | translate }}</p>
+    </div>
+
+    <div class="system-status">
+      <span class="status-dot"></span>
+      {{ 'monitoring.monitoringActive' | translate }}
+    </div>
+  </div>
+
+  <section class="monitor-card">
+
+    <div class="card-heading">
+      <div class="card-icon">📡</div>
+
+      <div>
+        <h2>{{ 'monitoring.environmentalMonitoring' | translate }}</h2>
+        <p>{{ 'monitoring.fieldConditions' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="monitor-grid">
+
+      <div class="monitor-item">
+        <div class="monitor-icon temperature">🌡️</div>
+        <div>
+          <span>{{ 'monitoring.temperature' | translate }}</span>
+          <strong>28 °C</strong>
+          <small>{{ 'monitoring.normal' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="monitor-item">
+        <div class="monitor-icon humidity">💧</div>
+        <div>
+          <span>{{ 'monitoring.humidity' | translate }}</span>
+          <strong>72 %</strong>
+          <small>{{ 'monitoring.good' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="monitor-item">
+        <div class="monitor-icon rainfall">🌧️</div>
+        <div>
+          <span>{{ 'monitoring.rainfall' | translate }}</span>
+          <strong>45 mm</strong>
+          <small>{{ 'monitoring.moderate' | translate }}</small>
+        </div>
+      </div>
+
+      <div class="monitor-item">
+        <div class="monitor-icon soil">🌱</div>
+        <div>
+          <span>{{ 'monitoring.soilMoisture' | translate }}</span>
+          <strong>64 %</strong>
+          <small>{{ 'monitoring.optimal' | translate }}</small>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="status-card">
+
+    <div class="status-heading">
+      <div>
+        <span class="result-label">{{ 'monitoring.fieldStatus' | translate }}</span>
+        <h2>{{ 'monitoring.cropHealthOverview' | translate }}</h2>
+      </div>
+
+      <span class="health-badge">{{ 'monitoring.healthy' | translate }}</span>
+    </div>
+
+    <div class="health-content">
+
+      <div class="health-bar">
+        <div class="health-progress"></div>
+      </div>
+
+      <div class="health-details">
+        <span>{{ 'monitoring.overallCondition' | translate }}</span>
+        <strong>82%</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="info-grid">
+
+    <article class="info-card">
+      <div class="info-icon">🌦️</div>
+      <div>
+        <h3>{{ 'monitoring.weatherConditions' | translate }}</h3>
+        <p>{{ 'monitoring.weatherDesc' | translate }}</p>
+      </div>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">💧</div>
+      <div>
+        <h3>{{ 'monitoring.moistureLevel' | translate }}</h3>
+        <p>{{ 'monitoring.moistureDesc' | translate }}</p>
+      </div>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">🛡️</div>
+      <div>
+        <h3>{{ 'monitoring.cropProtection' | translate }}</h3>
+        <p>{{ 'monitoring.cropProtectionDesc' | translate }}</p>
+      </div>
+    </article>
+
+  </section>
+
+</div>

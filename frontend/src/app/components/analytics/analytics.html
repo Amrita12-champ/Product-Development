@@ -1,0 +1,126 @@
+<div class="analytics-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'ANALYTICS.EYEBROW' | translate }}</span>
+      <h1>{{ 'ANALYTICS.TITLE' | translate }}</h1>
+      <p>{{ 'ANALYTICS.SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="analytics-status">
+      <span class="status-dot"></span>
+      {{ 'ANALYTICS.LIVE_DATA' | translate }}
+    </div>
+  </div>
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon">🌱</div>
+      <div>
+        <span>{{ 'ANALYTICS.TOTAL_CROPS' | translate }}</span>
+        <strong>24</strong>
+        <small>{{ 'ANALYTICS.MONITORED_SUB' | translate }}</small>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🩺</div>
+      <div>
+        <span>{{ 'ANALYTICS.DIAGNOSED' | translate }}</span>
+        <strong>18</strong>
+        <small>{{ 'ANALYTICS.DIAGNOSED_SUB' | translate }}</small>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⚠️</div>
+      <div>
+        <span>{{ 'ANALYTICS.RISK_ALERTS' | translate }}</span>
+        <strong>5</strong>
+        <small>{{ 'ANALYTICS.RISK_SUB' | translate }}</small>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">💚</div>
+      <div>
+        <span>{{ 'ANALYTICS.HEALTHY_CROPS' | translate }}</span>
+        <strong>19</strong>
+        <small>{{ 'ANALYTICS.HEALTHY_SUB' | translate }}</small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="analytics-card">
+
+    <div class="card-heading">
+      <div>
+        <h2>{{ 'ANALYTICS.HEALTH_OVERVIEW' | translate }}</h2>
+        <p>{{ 'ANALYTICS.HEALTH_OVERVIEW_SUB' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="health-bars">
+
+      <div class="health-row">
+        <div class="health-label">
+          <span>{{ 'ANALYTICS.HEALTHY' | translate }}</span>
+          <strong>79%</strong>
+        </div>
+        <div class="bar">
+          <div class="progress healthy"></div>
+        </div>
+      </div>
+
+      <div class="health-row">
+        <div class="health-label">
+          <span>{{ 'ANALYTICS.MODERATE_RISK' | translate }}</span>
+          <strong>13%</strong>
+        </div>
+        <div class="bar">
+          <div class="progress moderate"></div>
+        </div>
+      </div>
+
+      <div class="health-row">
+        <div class="health-label">
+          <span>{{ 'ANALYTICS.HIGH_RISK' | translate }}</span>
+          <strong>8%</strong>
+        </div>
+        <div class="bar">
+          <div class="progress high"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="info-icon">🌡️</div>
+      <h3>{{ 'ANALYTICS.TEMPERATURE' | translate }}</h3>
+      <strong>28°C</strong>
+      <p>{{ 'ANALYTICS.TEMP_SUB' | translate }}</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">💧</div>
+      <h3>{{ 'ANALYTICS.HUMIDITY' | translate }}</h3>
+      <strong>68%</strong>
+      <p>{{ 'ANALYTICS.HUMIDITY_SUB' | translate }}</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🌧️</div>
+      <h3>{{ 'ANALYTICS.RAINFALL' | translate }}</h3>
+      <strong>42 mm</strong>
+      <p>{{ 'ANALYTICS.RAINFALL_SUB' | translate }}</p>
+    </div>
+
+  </div>
+
+</div>

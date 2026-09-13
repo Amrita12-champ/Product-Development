@@ -1,0 +1,188 @@
+<div class="diagnosis-page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">🌱 {{ 'diagnosis.smartAgriculture' | translate }}</span>
+      <h1>{{ 'diagnosis.title' | translate }}</h1>
+      <p>{{ 'diagnosis.subtitle' | translate }}</p>
+    </div>
+
+    <div class="system-status">
+      <span class="status-dot"></span>
+      {{ 'diagnosis.systemReady' | translate }}
+    </div>
+  </div>
+
+  <!-- MAIN DIAGNOSIS CARD -->
+  <section class="diagnosis-card">
+
+    <div class="card-heading">
+      <div class="card-icon">🔬</div>
+      <div>
+        <h2>{{ 'diagnosis.cardTitle' | translate }}</h2>
+        <p>{{ 'diagnosis.cardSubtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <!-- UPLOAD AREA -->
+    @if (!selectedImage) {
+      <div class="upload-area">
+        <div class="upload-icon">🌿</div>
+        <h3>{{ 'diagnosis.uploadHeading' | translate }}</h3>
+        <p>{{ 'diagnosis.uploadPrompt' | translate }}</p>
+
+        <label class="upload-button">
+          📁 {{ 'diagnosis.chooseImage' | translate }}
+          <input
+            type="file"
+            accept="image/*"
+            (change)="onImageSelected($event)"
+            hidden
+          />
+        </label>
+
+        <div class="upload-note">
+          {{ 'diagnosis.supportedFormats' | translate }}
+        </div>
+      </div>
+    }
+
+    <!-- IMAGE PREVIEW -->
+    @if (selectedImage) {
+      <div class="preview-section">
+        <div class="preview-header">
+          <div>
+            <h3>{{ 'diagnosis.selectedImage' | translate }}</h3>
+            <p>{{ fileName }} · {{ fileSize }}</p>
+          </div>
+
+          <button
+            type="button"
+            class="remove-button"
+            (click)="removeImage($event)">
+            ✕ {{ 'diagnosis.remove' | translate }}
+          </button>
+        </div>
+
+        <div class="image-preview">
+          <img
+            [src]="selectedImage"
+            alt="Selected crop leaf image"
+          />
+        </div>
+      </div>
+    }
+
+    <!-- DIAGNOSE BUTTON -->
+    <button
+      type="button"
+      class="diagnose-button"
+      [disabled]="!selectedImage || isDiagnosing"
+      (click)="diagnose()">
+
+      @if (isDiagnosing) {
+        <span class="spinner"></span>
+        {{ 'diagnosis.analyzing' | translate }}
+      } @else {
+        <span>🔍</span>
+        {{ 'diagnosis.diagnoseButton' | translate }}
+      }
+    </button>
+
+    <!-- RESET BUTTON -->
+    @if (selectedImage) {
+      <button
+        type="button"
+        class="reset-button"
+        (click)="resetDiagnosis()">
+        ↻ {{ 'diagnosis.startNew' | translate }}
+      </button>
+    }
+
+  </section>
+
+  <!-- RESULT CARD -->
+  @if (showResult) {
+    <section class="result-card">
+
+      <div class="result-top">
+        <div>
+          <span class="result-label">{{ 'diagnosis.resultLabel' | translate }}</span>
+          <h2>{{ 'diagnosis.resultTitle' | translate }}</h2>
+          <p class="result-time">
+            {{ 'diagnosis.completedAt' | translate }} {{ diagnosisTime }}
+          </p>
+        </div>
+
+        <div class="result-badge">
+          ✓ {{ 'diagnosis.analysisComplete' | translate }}
+        </div>
+      </div>
+
+      <!-- RESULT VALUES -->
+      <div class="result-grid">
+
+        <div class="result-item">
+          <span>🦠 {{ 'diagnosis.diseaseLabel' | translate }}</span>
+          <strong>
+            {{ diseaseKey ? ('diagnosis.diseases.' + diseaseKey | translate) : '-' }}
+          </strong>
+        </div>
+
+        <div class="result-item">
+          <span>🎯 {{ 'diagnosis.confidenceLabel' | translate }}</span>
+          <strong>{{ confidence }}</strong>
+        </div>
+
+        <div class="result-item">
+          <span>⚠️ {{ 'diagnosis.severityLabel' | translate }}</span>
+          <strong>
+            {{ severityKey ? ('diagnosis.severities.' + severityKey | translate) : '-' }}
+          </strong>
+        </div>
+
+      </div>
+
+      <!-- RECOMMENDATION -->
+      <div class="recommendation-box">
+        <div class="recommendation-icon">💡</div>
+        <div>
+          <h3>{{ 'diagnosis.recommendationTitle' | translate }}</h3>
+          <p>{{ 'diagnosis.recommendationText' | translate }}</p>
+        </div>
+      </div>
+
+    </section>
+  }
+
+  <!-- INFORMATION CARDS -->
+  <section class="info-grid">
+
+    <article class="info-card">
+      <div class="info-icon">📷</div>
+      <div>
+        <h3>{{ 'diagnosis.clearImageTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.clearImageDesc' | translate }}</p>
+      </div>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">🧠</div>
+      <div>
+        <h3>{{ 'diagnosis.smartAnalysisTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.smartAnalysisDesc' | translate }}</p>
+      </div>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">🛡️</div>
+      <div>
+        <h3>{{ 'diagnosis.earlyDetectionTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.earlyDetectionDesc' | translate }}</p>
+      </div>
+    </article>
+
+  </section>
+
+</div>

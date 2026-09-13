@@ -1,0 +1,15 @@
+<div class="lang-container">
+  <label for="languageSelect" class="lang-label">
+    🌐 {{ 'NAV.SELECT_LANGUAGE' | translate }}:
+  </label>
+  <select
+    id="languageSelect"
+    [value]="currentLang"
+    (change)="onLanguageChange($event)"
+    class="lang-select"
+  >
+    <option *ngFor="let lang of languages" [value]="lang.code">
+      {{ lang.label }}
+    </option>
+  </select>
+</div>
