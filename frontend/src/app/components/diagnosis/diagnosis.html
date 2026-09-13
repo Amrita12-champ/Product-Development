@@ -1,325 +1,187 @@
 <div class="diagnosis-page">
 
   <!-- PAGE HEADER -->
-
   <div class="page-header">
+    <div>
+      <span class="eyebrow">🌱 {{ 'diagnosis.smartAgriculture' | translate }}</span>
+      <h1>{{ 'diagnosis.title' | translate }}</h1>
+      <p>{{ 'diagnosis.subtitle' | translate }}</p>
+    </div>
 
-
-<div>
-  <span class="eyebrow">🌱 SMART AGRICULTURE</span>
-
-  <h1>Crop Disease Diagnosis</h1>
-
-  <p>
-    Upload a crop leaf image and analyze its health condition.
-  </p>
-</div>
-
-<div class="system-status">
-  <span class="status-dot"></span>
-  System Ready
-</div>
-
-
+    <div class="system-status">
+      <span class="status-dot"></span>
+      {{ 'diagnosis.systemReady' | translate }}
+    </div>
   </div>
 
   <!-- MAIN DIAGNOSIS CARD -->
-
   <section class="diagnosis-card">
 
-
-<div class="card-heading">
-
-  <div class="card-icon">
-    🔬
-  </div>
-
-  <div>
-    <h2>Leaf Image Analysis</h2>
-
-    <p>
-      Upload a clear image of the affected crop leaf.
-    </p>
-  </div>
-
-</div>
-
-
-<!-- UPLOAD AREA -->
-@if (!selectedImage) {
-
-  <div class="upload-area">
-
-    <div class="upload-icon">
-      🌿
-    </div>
-
-    <h3>Upload Crop Leaf Image</h3>
-
-    <p>
-      Choose a clear and well-lit image of the crop leaf.
-    </p>
-
-    <label class="upload-button">
-
-      📁 Choose Image
-
-      <input
-        type="file"
-        accept="image/*"
-        (change)="onImageSelected($event)"
-        hidden
-      />
-
-    </label>
-
-    <div class="upload-note">
-      Supported format: JPG, JPEG, PNG
-    </div>
-
-  </div>
-
-}
-
-
-<!-- IMAGE PREVIEW -->
-@if (selectedImage) {
-
-  <div class="preview-section">
-
-    <div class="preview-header">
-
+    <div class="card-heading">
+      <div class="card-icon">🔬</div>
       <div>
-        <h3>Selected Image</h3>
-
-        <p>
-          {{ fileName }} · {{ fileSize }}
-        </p>
+        <h2>{{ 'diagnosis.cardTitle' | translate }}</h2>
+        <p>{{ 'diagnosis.cardSubtitle' | translate }}</p>
       </div>
+    </div>
 
+    <!-- UPLOAD AREA -->
+    @if (!selectedImage) {
+      <div class="upload-area">
+        <div class="upload-icon">🌿</div>
+        <h3>{{ 'diagnosis.uploadHeading' | translate }}</h3>
+        <p>{{ 'diagnosis.uploadPrompt' | translate }}</p>
+
+        <label class="upload-button">
+          📁 {{ 'diagnosis.chooseImage' | translate }}
+          <input
+            type="file"
+            accept="image/*"
+            (change)="onImageSelected($event)"
+            hidden
+          />
+        </label>
+
+        <div class="upload-note">
+          {{ 'diagnosis.supportedFormats' | translate }}
+        </div>
+      </div>
+    }
+
+    <!-- IMAGE PREVIEW -->
+    @if (selectedImage) {
+      <div class="preview-section">
+        <div class="preview-header">
+          <div>
+            <h3>{{ 'diagnosis.selectedImage' | translate }}</h3>
+            <p>{{ fileName }} · {{ fileSize }}</p>
+          </div>
+
+          <button
+            type="button"
+            class="remove-button"
+            (click)="removeImage($event)">
+            ✕ {{ 'diagnosis.remove' | translate }}
+          </button>
+        </div>
+
+        <div class="image-preview">
+          <img
+            [src]="selectedImage"
+            alt="Selected crop leaf image"
+          />
+        </div>
+      </div>
+    }
+
+    <!-- DIAGNOSE BUTTON -->
+    <button
+      type="button"
+      class="diagnose-button"
+      [disabled]="!selectedImage || isDiagnosing"
+      (click)="diagnose()">
+
+      @if (isDiagnosing) {
+        <span class="spinner"></span>
+        {{ 'diagnosis.analyzing' | translate }}
+      } @else {
+        <span>🔍</span>
+        {{ 'diagnosis.diagnoseButton' | translate }}
+      }
+    </button>
+
+    <!-- RESET BUTTON -->
+    @if (selectedImage) {
       <button
         type="button"
-        class="remove-button"
-        (click)="removeImage($event)">
-
-        ✕ Remove
-
+        class="reset-button"
+        (click)="resetDiagnosis()">
+        ↻ {{ 'diagnosis.startNew' | translate }}
       </button>
-
-    </div>
-
-
-    <div class="image-preview">
-
-      <img
-        [src]="selectedImage"
-        alt="Selected crop leaf image"
-      />
-
-    </div>
-
-  </div>
-
-}
-
-
-<!-- DIAGNOSE BUTTON -->
-<button
-  type="button"
-  class="diagnose-button"
-  [disabled]="!selectedImage || isDiagnosing"
-  (click)="diagnose()">
-
-  @if (isDiagnosing) {
-
-    <span class="spinner"></span>
-    Analyzing Image...
-
-  } @else {
-
-    <span>🔍</span>
-    Diagnose Crop
-
-  }
-
-</button>
-
-
-<!-- RESET BUTTON -->
-@if (selectedImage) {
-
-  <button
-    type="button"
-    class="reset-button"
-    (click)="resetDiagnosis()">
-
-    ↻ Start New Diagnosis
-
-  </button>
-
-}
-
+    }
 
   </section>
 
   <!-- RESULT CARD -->
+  @if (showResult) {
+    <section class="result-card">
 
-@if (showResult) {
+      <div class="result-top">
+        <div>
+          <span class="result-label">{{ 'diagnosis.resultLabel' | translate }}</span>
+          <h2>{{ 'diagnosis.resultTitle' | translate }}</h2>
+          <p class="result-time">
+            {{ 'diagnosis.completedAt' | translate }} {{ diagnosisTime }}
+          </p>
+        </div>
 
+        <div class="result-badge">
+          ✓ {{ 'diagnosis.analysisComplete' | translate }}
+        </div>
+      </div>
 
-<section class="result-card">
+      <!-- RESULT VALUES -->
+      <div class="result-grid">
 
-  <div class="result-top">
+        <div class="result-item">
+          <span>🦠 {{ 'diagnosis.diseaseLabel' | translate }}</span>
+          <strong>
+            {{ diseaseKey ? ('diagnosis.diseases.' + diseaseKey | translate) : '-' }}
+          </strong>
+        </div>
 
-    <div>
+        <div class="result-item">
+          <span>🎯 {{ 'diagnosis.confidenceLabel' | translate }}</span>
+          <strong>{{ confidence }}</strong>
+        </div>
 
-      <span class="result-label">
-        ANALYSIS RESULT
-      </span>
+        <div class="result-item">
+          <span>⚠️ {{ 'diagnosis.severityLabel' | translate }}</span>
+          <strong>
+            {{ severityKey ? ('diagnosis.severities.' + severityKey | translate) : '-' }}
+          </strong>
+        </div>
 
-      <h2>Diagnosis Result</h2>
+      </div>
 
-      <p class="result-time">
-        Analysis completed at {{ diagnosisTime }}
-      </p>
+      <!-- RECOMMENDATION -->
+      <div class="recommendation-box">
+        <div class="recommendation-icon">💡</div>
+        <div>
+          <h3>{{ 'diagnosis.recommendationTitle' | translate }}</h3>
+          <p>{{ 'diagnosis.recommendationText' | translate }}</p>
+        </div>
+      </div>
 
-    </div>
-
-    <div class="result-badge">
-      ✓ Analysis Complete
-    </div>
-
-  </div>
-
-
-  <!-- RESULT VALUES -->
-  <div class="result-grid">
-
-    <div class="result-item">
-
-      <span>🦠 Disease</span>
-
-      <strong>
-        {{ disease }}
-      </strong>
-
-    </div>
-
-
-    <div class="result-item">
-
-      <span>🎯 Confidence</span>
-
-      <strong>
-        {{ confidence }}
-      </strong>
-
-    </div>
-
-
-    <div class="result-item">
-
-      <span>⚠️ Severity</span>
-
-      <strong>
-        {{ severity }}
-      </strong>
-
-    </div>
-
-  </div>
-
-
-  <!-- RECOMMENDATION -->
-  <div class="recommendation-box">
-
-    <div class="recommendation-icon">
-      💡
-    </div>
-
-    <div>
-
-      <h3>Recommendation</h3>
-
-      <p>
-        The crop shows signs of Leaf Spot.
-        Monitor the affected leaves regularly and
-        take appropriate preventive measures.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-}
+    </section>
+  }
 
   <!-- INFORMATION CARDS -->
-
   <section class="info-grid">
 
+    <article class="info-card">
+      <div class="info-icon">📷</div>
+      <div>
+        <h3>{{ 'diagnosis.clearImageTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.clearImageDesc' | translate }}</p>
+      </div>
+    </article>
 
-<article class="info-card">
+    <article class="info-card">
+      <div class="info-icon">🧠</div>
+      <div>
+        <h3>{{ 'diagnosis.smartAnalysisTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.smartAnalysisDesc' | translate }}</p>
+      </div>
+    </article>
 
-  <div class="info-icon">
-    📷
-  </div>
-
-  <div>
-
-    <h3>Clear Image</h3>
-
-    <p>
-      Upload a clear and well-lit crop leaf image
-      for better diagnosis results.
-    </p>
-
-  </div>
-
-</article>
-
-
-<article class="info-card">
-
-  <div class="info-icon">
-    🧠
-  </div>
-
-  <div>
-
-    <h3>Smart Analysis</h3>
-
-    <p>
-      The system analyzes the uploaded image
-      to identify possible crop diseases.
-    </p>
-
-  </div>
-
-</article>
-
-
-<article class="info-card">
-
-  <div class="info-icon">
-    🛡️
-  </div>
-
-  <div>
-
-    <h3>Early Detection</h3>
-
-    <p>
-      Early detection helps farmers take
-      preventive action and protect crop health.
-    </p>
-
-  </div>
-
-</article>
-
+    <article class="info-card">
+      <div class="info-icon">🛡️</div>
+      <div>
+        <h3>{{ 'diagnosis.earlyDetectionTitle' | translate }}</h3>
+        <p>{{ 'diagnosis.earlyDetectionDesc' | translate }}</p>
+      </div>
+    </article>
 
   </section>
 

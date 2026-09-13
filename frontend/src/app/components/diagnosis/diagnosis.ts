@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-diagnosis',
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
   templateUrl: './diagnosis.html',
   styleUrl: './diagnosis.css'
 })
@@ -12,16 +16,15 @@ export class Diagnosis {
   showResult = false;
   isDiagnosing = false;
 
-  disease = '-';
+  diseaseKey = '';
+  severityKey = '';
   confidence = '-';
-  severity = '-';
 
   fileName = '';
   fileSize = '';
   diagnosisTime = '';
 
   onImageSelected(event: Event): void {
-
     const input = event.target as HTMLInputElement;
 
     if (!input.files || input.files.length === 0) {
@@ -49,7 +52,6 @@ export class Diagnosis {
   }
 
   diagnose(): void {
-
     if (!this.selectedImage) {
       return;
     }
@@ -58,33 +60,23 @@ export class Diagnosis {
     this.showResult = false;
 
     setTimeout(() => {
-
-      this.disease = 'Leaf Spot';
+      this.diseaseKey = 'leafSpot';
       this.confidence = '92%';
-      this.severity = 'Moderate';
+      this.severityKey = 'moderate';
 
       this.showResult = true;
       this.isDiagnosing = false;
 
       this.diagnosisTime = new Date().toLocaleTimeString();
-
     }, 1500);
   }
 
   removeImage(event: Event): void {
-
     event.stopPropagation();
-
-    this.selectedImage = null;
-    this.fileName = '';
-    this.fileSize = '';
-    this.showResult = false;
-    this.isDiagnosing = false;
-    this.diagnosisTime = '';
+    this.resetDiagnosis();
   }
 
   resetDiagnosis(): void {
-
     this.selectedImage = null;
     this.fileName = '';
     this.fileSize = '';
@@ -92,9 +84,9 @@ export class Diagnosis {
     this.showResult = false;
     this.isDiagnosing = false;
 
-    this.disease = '-';
+    this.diseaseKey = '';
     this.confidence = '-';
-    this.severity = '-';
+    this.severityKey = '';
 
     this.diagnosisTime = '';
   }

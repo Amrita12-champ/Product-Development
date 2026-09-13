@@ -1,245 +1,180 @@
 <div class="risk-page">
 
   <!-- Page Header -->
-
   <div class="page-header">
     <div>
-      <span class="eyebrow">🌾 SMART AGRICULTURE</span>
-      <h1>Crop Risk Prediction</h1>
-      <p>Analyze environmental conditions and identify potential crop risks.</p>
+      <span class="eyebrow">🌾 {{ 'risk.smartAgriculture' | translate }}</span>
+      <h1>{{ 'risk.title' | translate }}</h1>
+      <p>{{ 'risk.subtitle' | translate }}</p>
     </div>
 
-
-<div class="system-status">
-  <span class="status-dot"></span>
-  System Ready
-</div>
-
-
+    <div class="system-status">
+      <span class="status-dot"></span>
+      {{ 'risk.systemReady' | translate }}
+    </div>
   </div>
 
   <!-- Main Prediction Card -->
-
   <section class="prediction-card">
 
-
-<div class="card-heading">
-  <div class="card-icon">📊</div>
-
-  <div>
-    <h2>Crop Information</h2>
-    <p>Enter the current crop and environmental details.</p>
-  </div>
-</div>
-
-
-<div class="form-grid">
-
-  <!-- Crop -->
-  <div class="field">
-    <label for="cropType">🌱 Crop Type</label>
-
-    <select id="cropType" [(ngModel)]="cropType">
-      <option value="">Select crop type</option>
-      <option value="Rice">Rice</option>
-      <option value="Wheat">Wheat</option>
-      <option value="Maize">Maize</option>
-      <option value="Tomato">Tomato</option>
-      <option value="Potato">Potato</option>
-      <option value="Cotton">Cotton</option>
-    </select>
-  </div>
-
-
-  <!-- Temperature -->
-  <div class="field">
-    <label for="temperature">🌡️ Temperature</label>
-
-    <div class="input-with-unit">
-      <input
-        id="temperature"
-        type="number"
-        [(ngModel)]="temperature"
-        placeholder="Enter temperature"
-      />
-      <span>°C</span>
+    <div class="card-heading">
+      <div class="card-icon">📊</div>
+      <div>
+        <h2>{{ 'risk.cropInfoTitle' | translate }}</h2>
+        <p>{{ 'risk.cropInfoSubtitle' | translate }}</p>
+      </div>
     </div>
-  </div>
 
+    <div class="form-grid">
 
-  <!-- Humidity -->
-  <div class="field">
-    <label for="humidity">💧 Humidity</label>
+      <!-- Crop -->
+      <div class="field">
+        <label for="cropType">🌱 {{ 'risk.cropType' | translate }}</label>
+        <select id="cropType" [(ngModel)]="cropType">
+          <option value="">{{ 'risk.selectCrop' | translate }}</option>
+          <option value="Rice">{{ 'risk.crops.rice' | translate }}</option>
+          <option value="Wheat">{{ 'risk.crops.wheat' | translate }}</option>
+          <option value="Maize">{{ 'risk.crops.maize' | translate }}</option>
+          <option value="Tomato">{{ 'risk.crops.tomato' | translate }}</option>
+          <option value="Potato">{{ 'risk.crops.potato' | translate }}</option>
+          <option value="Cotton">{{ 'risk.crops.cotton' | translate }}</option>
+        </select>
+      </div>
 
-    <div class="input-with-unit">
-      <input
-        id="humidity"
-        type="number"
-        [(ngModel)]="humidity"
-        placeholder="Enter humidity"
-      />
-      <span>%</span>
+      <!-- Temperature -->
+      <div class="field">
+        <label for="temperature">🌡️ {{ 'risk.temperature' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            id="temperature"
+            type="number"
+            [(ngModel)]="temperature"
+            [placeholder]="'risk.tempPlaceholder' | translate"
+          />
+          <span>°C</span>
+        </div>
+      </div>
+
+      <!-- Humidity -->
+      <div class="field">
+        <label for="humidity">💧 {{ 'risk.humidity' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            id="humidity"
+            type="number"
+            [(ngModel)]="humidity"
+            [placeholder]="'risk.humidityPlaceholder' | translate"
+          />
+          <span>%</span>
+        </div>
+      </div>
+
+      <!-- Rainfall -->
+      <div class="field">
+        <label for="rainfall">🌧️ {{ 'risk.rainfall' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            id="rainfall"
+            type="number"
+            [(ngModel)]="rainfall"
+            [placeholder]="'risk.rainfallPlaceholder' | translate"
+          />
+          <span>mm</span>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-
-  <!-- Rainfall -->
-  <div class="field">
-    <label for="rainfall">🌧️ Rainfall</label>
-
-    <div class="input-with-unit">
-      <input
-        id="rainfall"
-        type="number"
-        [(ngModel)]="rainfall"
-        placeholder="Enter rainfall"
-      />
-      <span>mm</span>
-    </div>
-  </div>
-
-</div>
-
-
-<button
-  type="button"
-  class="risk-button"
-  (click)="checkRisk()">
-
-  <span>🔍</span>
-  Check Crop Risk
-
-</button>
-
+    <button
+      type="button"
+      class="risk-button"
+      (click)="checkRisk()">
+      <span>🔍</span>
+      {{ 'risk.checkButton' | translate }}
+    </button>
 
   </section>
 
   <!-- Result -->
+  @if (showResult) {
+    <section class="result-card">
 
-@if (showResult) {
+      <div class="result-top">
+        <div>
+          <span class="result-label">{{ 'risk.resultLabel' | translate }}</span>
+          <h2>{{ 'risk.resultTitle' | translate }}</h2>
+        </div>
 
+        <div
+          class="risk-badge"
+          [class.high]="riskLevelKey === 'high'"
+          [class.medium]="riskLevelKey === 'medium'"
+          [class.low]="riskLevelKey === 'low'">
+          {{ 'risk.levels.' + riskLevelKey | translate }} {{ 'risk.riskSuffix' | translate }}
+        </div>
+      </div>
 
-<section class="result-card">
+      <div class="result-stats">
 
-  <div class="result-top">
+        <div class="result-stat">
+          <span>🌱 {{ 'risk.cropLabel' | translate }}</span>
+          <strong>{{ 'risk.crops.' + cropType.toLowerCase() | translate }}</strong>
+        </div>
 
-    <div>
-      <span class="result-label">ANALYSIS RESULT</span>
-      <h2>Crop Risk Assessment</h2>
-    </div>
+        <div class="result-stat">
+          <span>🌡️ {{ 'risk.temperature' | translate }}</span>
+          <strong>{{ temperature }} °C</strong>
+        </div>
 
-    <div
-      class="risk-badge"
-      [class.high]="riskLevel === 'High'"
-      [class.medium]="riskLevel === 'Medium'"
-      [class.low]="riskLevel === 'Low'">
+        <div class="result-stat">
+          <span>💧 {{ 'risk.humidity' | translate }}</span>
+          <strong>{{ humidity }} %</strong>
+        </div>
 
-      {{ riskLevel }} Risk
+        <div class="result-stat">
+          <span>🌧️ {{ 'risk.rainfall' | translate }}</span>
+          <strong>{{ rainfall }} mm</strong>
+        </div>
 
-    </div>
+      </div>
 
-  </div>
+      <div class="warning-box">
+        <div class="warning-icon">💡</div>
+        <div>
+          <h3>{{ 'risk.recommendation' | translate }}</h3>
+          <p>{{ 'risk.warnings.' + warningKey | translate }}</p>
+        </div>
+      </div>
 
-
-  <div class="result-stats">
-
-    <div class="result-stat">
-      <span>🌱 Crop</span>
-      <strong>{{ cropType }}</strong>
-    </div>
-
-    <div class="result-stat">
-      <span>🌡️ Temperature</span>
-      <strong>{{ temperature }} °C</strong>
-    </div>
-
-    <div class="result-stat">
-      <span>💧 Humidity</span>
-      <strong>{{ humidity }} %</strong>
-    </div>
-
-    <div class="result-stat">
-      <span>🌧️ Rainfall</span>
-      <strong>{{ rainfall }} mm</strong>
-    </div>
-
-  </div>
-
-
-  <div class="warning-box">
-
-    <div class="warning-icon">💡</div>
-
-    <div>
-      <h3>Recommendation</h3>
-      <p>{{ warningMessage }}</p>
-    </div>
-
-  </div>
-
-</section>
-
-
-}
+    </section>
+  }
 
   <!-- Information Cards -->
-
   <section class="info-grid">
 
+    <article class="info-card">
+      <div class="info-icon weather">🌦️</div>
+      <div>
+        <h3>{{ 'risk.envFactorsTitle' | translate }}</h3>
+        <p>{{ 'risk.envFactorsDesc' | translate }}</p>
+      </div>
+    </article>
 
-<article class="info-card">
+    <article class="info-card">
+      <div class="info-icon moisture">💧</div>
+      <div>
+        <h3>{{ 'risk.cropMonitoringTitle' | translate }}</h3>
+        <p>{{ 'risk.cropMonitoringDesc' | translate }}</p>
+      </div>
+    </article>
 
-  <div class="info-icon weather">
-    🌦️
-  </div>
-
-  <div>
-    <h3>Environmental Factors</h3>
-
-    <p>
-      Temperature, humidity and rainfall can affect
-      crop health and disease development.
-    </p>
-  </div>
-
-</article>
-
-
-<article class="info-card">
-
-  <div class="info-icon moisture">
-    💧
-  </div>
-
-  <div>
-    <h3>Crop Monitoring</h3>
-
-    <p>
-      Regular monitoring helps identify changing
-      environmental conditions at an early stage.
-    </p>
-  </div>
-
-</article>
-
-
-<article class="info-card">
-
-  <div class="info-icon protection">
-    🛡️
-  </div>
-
-  <div>
-    <h3>Early Prevention</h3>
-
-    <p>
-      Early risk detection helps farmers take
-      preventive action and protect their crops.
-    </p>
-  </div>
-
-</article>
-
+    <article class="info-card">
+      <div class="info-icon protection">🛡️</div>
+      <div>
+        <h3>{{ 'risk.earlyPreventionTitle' | translate }}</h3>
+        <p>{{ 'risk.earlyPreventionDesc' | translate }}</p>
+      </div>
+    </article>
 
   </section>
 

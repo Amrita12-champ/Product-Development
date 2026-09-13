@@ -2,14 +2,14 @@
 
   <div class="page-header">
     <div>
-      <span class="eyebrow">USER PROFILE</span>
-      <h1>My Profile</h1>
-      <p>Manage your personal and farming information.</p>
+      <span class="eyebrow">{{ 'profile.eyebrow' | translate }}</span>
+      <h1>{{ 'profile.title' | translate }}</h1>
+      <p>{{ 'profile.subtitle' | translate }}</p>
     </div>
 
     <div class="profile-status">
       <span class="status-dot"></span>
-      Active
+      {{ 'profile.statusActive' | translate }}
     </div>
   </div>
 
@@ -20,42 +20,54 @@
 
       <div>
         <h2>{{ name }}</h2>
-        <p>Crop Dashboard User</p>
+        <p>{{ 'profile.userRole' | translate }}</p>
       </div>
     </div>
 
     <div class="form-grid">
 
       <div class="form-group">
-        <label>Full Name</label>
+        <label>{{ 'profile.fullName' | translate }}</label>
         <input type="text" [(ngModel)]="name">
       </div>
 
       <div class="form-group">
-        <label>Email Address</label>
+        <label>{{ 'profile.emailAddress' | translate }}</label>
         <input type="email" [(ngModel)]="email">
       </div>
 
       <div class="form-group">
-        <label>Phone Number</label>
-        <input type="text" [(ngModel)]="phone" placeholder="Enter phone number">
+        <label>{{ 'profile.phoneNumber' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="phone"
+          [placeholder]="'profile.phonePlaceholder' | translate"
+        >
       </div>
 
       <div class="form-group">
-        <label>Location</label>
-        <input type="text" [(ngModel)]="location" placeholder="Enter location">
+        <label>{{ 'profile.location' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="location"
+          [placeholder]="'profile.locationPlaceholder' | translate"
+        >
       </div>
 
       <div class="form-group full-width">
-        <label>Farm Name</label>
-        <input type="text" [(ngModel)]="farmName" placeholder="Enter farm name">
+        <label>{{ 'profile.farmName' | translate }}</label>
+        <input
+          type="text"
+          [(ngModel)]="farmName"
+          [placeholder]="'profile.farmNamePlaceholder' | translate"
+        >
       </div>
 
     </div>
 
     <div class="profile-actions">
       <button type="button" (click)="saveProfile()">
-        Save Changes
+        {{ 'profile.saveChanges' | translate }}
       </button>
     </div>
 
@@ -66,24 +78,24 @@
     <div class="info-card">
       <div class="info-icon">🌱</div>
       <div>
-        <h3>Crop Monitoring</h3>
-        <p>Monitor crop health and environmental conditions.</p>
+        <h3>{{ 'profile.monitoringTitle' | translate }}</h3>
+        <p>{{ 'profile.monitoringDesc' | translate }}</p>
       </div>
     </div>
 
     <div class="info-card">
       <div class="info-icon">🩺</div>
       <div>
-        <h3>Disease Diagnosis</h3>
-        <p>Upload crop images for disease diagnosis.</p>
+        <h3>{{ 'profile.diagnosisTitle' | translate }}</h3>
+        <p>{{ 'profile.diagnosisDesc' | translate }}</p>
       </div>
     </div>
 
     <div class="info-card">
       <div class="info-icon">📊</div>
       <div>
-        <h3>Risk Prediction</h3>
-        <p>Check environmental crop disease risk.</p>
+        <h3>{{ 'profile.riskTitle' | translate }}</h3>
+        <p>{{ 'profile.riskDesc' | translate }}</p>
       </div>
     </div>
 

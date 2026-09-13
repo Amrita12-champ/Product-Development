@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-risk',
-  imports: [FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './risk.html',
   styleUrl: './risk.css'
 })
@@ -16,12 +19,10 @@ export class Risk {
 
   showResult = false;
 
-  riskLevel = '-';
-  warningMessage = '';
-
+  riskLevelKey = '';
+  warningKey = '';
 
   checkRisk(): void {
-
     if (
       !this.cropType ||
       this.temperature === null ||
@@ -32,39 +33,15 @@ export class Risk {
       return;
     }
 
-
-    /*
-     * Frontend-only demo logic.
-     * Backend/API can be connected here later.
-     */
-
-    if (
-      this.humidity >= 80 &&
-      this.rainfall >= 100
-    ) {
-
-      this.riskLevel = 'High';
-
-      this.warningMessage =
-        'High disease risk detected. High humidity and rainfall may increase the chance of crop disease.';
-
-    } else if (
-      this.humidity >= 60 ||
-      this.rainfall >= 50
-    ) {
-
-      this.riskLevel = 'Medium';
-
-      this.warningMessage =
-        'Moderate disease risk detected. Keep monitoring your crop and maintain proper field conditions.';
-
+    if (this.humidity >= 80 && this.rainfall >= 100) {
+      this.riskLevelKey = 'high';
+      this.warningKey = 'highDesc';
+    } else if (this.humidity >= 60 || this.rainfall >= 50) {
+      this.riskLevelKey = 'medium';
+      this.warningKey = 'mediumDesc';
     } else {
-
-      this.riskLevel = 'Low';
-
-      this.warningMessage =
-        'Low disease risk detected. Current environmental conditions appear relatively safe for the crop.';
-
+      this.riskLevelKey = 'low';
+      this.warningKey = 'lowDesc';
     }
 
     this.showResult = true;

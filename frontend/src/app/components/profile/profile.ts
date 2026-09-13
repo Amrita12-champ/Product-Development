@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
-  imports: [FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
@@ -15,7 +18,11 @@ export class Profile {
   location = '';
   farmName = '';
 
+  constructor(private translate: TranslateService) {}
+
   saveProfile(): void {
-    alert('Profile updated successfully!');
+    this.translate.get('profile.updateSuccess').subscribe((msg: string) => {
+      alert(msg);
+    });
   }
 }
